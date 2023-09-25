@@ -42,3 +42,9 @@ Mastermind is a game of logic, deduction, and strategy, and it can be a fun and 
 
 # Link Course
 https://www.theodinproject.com/lessons/ruby-mastermind
+
+# GitHup repo link
+https://github.com/odilsonjs/Mastermind
+
+# Replit link
+https://replit.com/@odilsonjs/Project-Mastermind?v=1
