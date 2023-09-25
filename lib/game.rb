@@ -28,8 +28,8 @@ def be_the_creator
         puts "\n"
         puts "Attempts: " + attempt.to_s
         thinking
-        puts "\n"
-        puts Mastermind.show_colors(valid_combination) + Mastermind.vizualize_feedback(valid_feedback)
+        puts "\n\n"
+        puts Mastermind.show_colors(valid_combination) + "Clues: " + Mastermind.vizualize_feedback(valid_feedback)
         puts "\n"
         if valid_combination == Mastermind.show_secret_combination
             puts "=" * 50
@@ -49,6 +49,7 @@ def be_the_creator
         puts "Number of attemps: " + attempt.to_s
         puts "Unfortunately the laptop has failled to guess your code. You WON".light_blue
     end
+end
 
 def be_the_breaker
     human_combination = []
@@ -61,11 +62,11 @@ def be_the_breaker
     puts "The laptop has successfully created the secret combination!".light_green
 
 
-    12.times do
+    3.times do
         attempt += 1
         puts "Attempts: " + attempt.to_s
         human_combination = HumanPlayer.human_makes_combinations
-        puts Mastermind.show_colors(human_combination) + Mastermind.vizualize_feedback(Mastermind.send_feedback(human_combination))
+        puts Mastermind.show_colors(human_combination) + "Clues: " + Mastermind.vizualize_feedback(Mastermind.send_feedback(human_combination))
         puts "\n"
         if human_combination == Mastermind.show_secret_combination
             puts "=" * 50
@@ -87,3 +88,4 @@ def be_the_breaker
         puts "\n"
         puts Mastermind.show_colors(Mastermind.show_secret_combination)
     end
+end
