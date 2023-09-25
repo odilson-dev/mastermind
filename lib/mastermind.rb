@@ -25,7 +25,7 @@ class Mastermind
         color_combinations.each do |value|
             arr << "   #{value[0]}   ".colorize(background: value[1].to_sym) + " "
         end
-        puts arr.join("")
+        arr.join("")
     end
 
 
@@ -57,4 +57,9 @@ class Mastermind
         end
         feedback
     end
+
+    def self.vizualize_feedback(feedback_list)
+        feedback_list.map { |one_feedback| one_feedback == 1 ? " + ".light_green : " + ".light_white }.join
+    end
+        
 end

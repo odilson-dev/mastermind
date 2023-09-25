@@ -8,6 +8,21 @@ def merge(arr1, arr2)
     end
     arr1
 end
+def thinking
+    # Prints a text-based "spinner" element while work occurs.
+    spinner = Enumerator.new do |e|
+    loop do
+      e.yield '|'
+      e.yield '/'
+      e.yield '-'
+      e.yield '\\'
+    end
+  end
+  1.upto(20) do |i|
+    printf("\rThe laptop is thinking about a combination: %s", spinner.next)
+    sleep(0.1)
+  end
+end
 
 class ComputerPlayer
     @@color_available = [1, 2, 3, 4, 5, 6]
@@ -21,7 +36,7 @@ class ComputerPlayer
     end
    
     def self.computer_create_secret_combination
-        Mastermind.set_secret_combination(Mastermind.Make_Combinations("3344"))
+        Mastermind.set_secret_combination(Mastermind.Make_Combinations("3254"))
     end
 
 
