@@ -35,14 +35,14 @@ class ComputerPlayer
         @@valid_colors
     end
    
-    def self.computer_create_secret_combination
-        Mastermind.set_secret_combination(Mastermind.Make_Combinations("3254"))
+    def self.create_secret_combination
+        Mastermind.set_secret_combination(Mastermind.Make_Combinations(self.computer_input))
     end
 
 
 
     def self.computer_input
-        combination_length = 4 # [4, 5, 6].sample
+        combination_length = 4 
         computer_input = []
         combination_length.times do
             computer_input << [1, 2, 3, 4, 5, 6].sample

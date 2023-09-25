@@ -9,7 +9,6 @@ def be_the_creator
     attempt = 0
 
 
-    # The computer
     puts "You'll make the secret color combination that the laptop has to guess"
     Mastermind.set_secret_combination(HumanPlayer.human_makes_combinations)
 
@@ -18,7 +17,7 @@ def be_the_creator
 
     puts "Good, Now the laptop is guessing your secret color combination"
 
-    10.times do
+    12.times do
         attempt += 1
         computer_player_combination = ComputerPlayer.guess_combination_from_feedback(feedback)
         feedback = Mastermind.send_feedback(computer_player_combination)
@@ -37,7 +36,7 @@ def be_the_creator
             puts "\n"
             puts "Number of attemps: " + attempt.to_s
             puts "\n"
-            puts "The laptop has successfully  guessed you color combination. It is:".light_green
+            puts "The laptop has successfully guessed you color combination. It is:".light_green
             puts "\n"
             puts Mastermind.show_colors(valid_combination)
             break
@@ -49,4 +48,42 @@ def be_the_creator
         puts "\n"
         puts "Number of attemps: " + attempt.to_s
         puts "Unfortunately the laptop has failled to guess your code. You WON".light_blue
+    end
+
+def be_the_breaker
+    human_combination = []
+    attempt = 0
+    puts "The laptop'll make the secret color combination so you can guess it"
+
+    ComputerPlayer.create_secret_combination
+    thinking
+    puts "\n"
+    puts "The laptop has successfully created the secret combination!".light_green
+
+
+    12.times do
+        attempt += 1
+        puts "Attempts: " + attempt.to_s
+        human_combination = HumanPlayer.human_makes_combinations
+        puts Mastermind.show_colors(human_combination) + Mastermind.vizualize_feedback(Mastermind.send_feedback(human_combination))
+        puts "\n"
+        if human_combination == Mastermind.show_secret_combination
+            puts "=" * 50
+            puts "\n"
+            puts "Number of attemps: " + attempt.to_s
+            puts "\n"
+            puts "You've successfully guessed the secret color combination. It is:".light_green
+            puts "\n"
+            puts Mastermind.show_colors(human_combination)
+            break
+        end
+    end
+    if human_combination != Mastermind.show_secret_combination
+        puts "=" * 50
+        puts "\n"
+        puts "Number of attemps: " + attempt.to_s
+        puts "Unfortunately you have failled to guess the combination. The laptop WON".light_blue
+        puts "The secret color combination was :".light_blue
+        puts "\n"
+        puts Mastermind.show_colors(Mastermind.show_secret_combination)
     end
