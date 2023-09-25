@@ -7,16 +7,18 @@ class Mastermind
                             [4 , "light_cyan"],
                             [5 , "light_red"],
                             [6 , "light_magenta"]]
-    @@combination_to_guess = []
+    @@secret_combination = []
 
 
-    def self.set_combination_to_guess(combination_to_guess)
-        @@combination_to_guess = combination_to_guess
+    def self.set_secret_combination(combination_to_guess)
+        @@secret_combination = combination_to_guess
     end
-    def self.show_combination_to_guess
-        @@combination_to_guess
+    def self.show_secret_combination
+        @@secret_combination
     end
-
+    def self.show_all_combinations
+        @@all_combinations
+    end
 
     def self.show_colors(color_combinations = @@all_combinations)
         arr = []
@@ -47,9 +49,9 @@ class Mastermind
         #return a array with the feedbacks
         feedback = []
         newcombination.each_with_index do |combination, index|
-            if combination == @@combination_to_guess[index]
+            if combination == @@secret_combination[index]
                 feedback << 1
-            elsif @@combination_to_guess.include?(combination)
+            elsif @@secret_combination.include?(combination)
                 feedback << 2
             end
         end

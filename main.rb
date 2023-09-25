@@ -4,10 +4,24 @@ require_relative 'lib/mastermind.rb'
 require 'colorize'
 
 
-# The laptop is the Breaker
-# Enter the combination that you want the laptop to break
+# I am The Breaker
+puts "The computer is making the color combination that you've to guess"
+Mastermind.set_secret_combination(ComputerPlayer.computer_create_secret_combination)
+Mastermind.show_colors(Mastermind.show_secret_combination)
 
-Mastermind.set_combination_to_guess(ComputerPlayer.computer_makes_combinations)
-puts "Mastermin guess #{Mastermind.show_combination_to_guess}"
-puts Mastermind.send_feedback(ComputerPlayer.computer_makes_combinations).join
-puts "Computer #{ComputerPlayer.show_computer_combination}"
+computer_player_combination = ComputerPlayer.computer_make_combination
+feedback = Mastermind.send_feedback(computer_player_combination)
+
+puts Mastermind.show_colors(computer_player_combination)
+p feedback
+10.times do
+    computer_player_combination = ComputerPlayer.guess_combination_from_feedback(feedback)
+    feedback = Mastermind.send_feedback(computer_player_combination)
+    
+    puts "feedback"
+    puts feedback.inspect
+    puts "Merged"
+    p Mastermind.send_feedback(merge(ComputerPlayer.show_valid_colors, computer_player_combination))
+    p Mastermind.show_colors(merge(ComputerPlayer.show_valid_colors, computer_player_combination))
+end
+
