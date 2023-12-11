@@ -1,7 +1,7 @@
 # Mastermind
-I built a Mastermind game from the command line where you have 12 turns to guess the secret code, starting with you guessing the computer’s random code.
+Mastermind is a command line game where you have 12 turns to guess the secret code, starting with you guessing the computer’s random code.
 
-Mastermind is a classic code-breaking board game for two players, one who creates a secret code and the other who attempts to guess the code. Here's how to play Mastermind:
+It is a classic code-breaking board game for two players, one who creates a secret code and the other who attempts to guess the code. Here's how to play Mastermind:
 
 Objective:
 
